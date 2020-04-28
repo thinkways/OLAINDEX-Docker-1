@@ -1,0 +1,11 @@
+version: '2'
+
+services:
+  core:
+    build: .
+    restart: always
+    ports:
+      - 127.0.0.1:3081:8080
+    volumes:
+      - ./.env:/var/www/html/.env
+      - ./db/database.sqlite:/var/www/html/database/database.sqlite
