@@ -15,7 +15,8 @@ RUN git clone https://github.com/WangNingkai/OLAINDEX.git tmp
 RUN mv tmp/.git .
 RUN rm -rf tmp
 RUN git reset --hard
-RUN cp database/database.sample.sqlite database/database.sqlite
+RUN cp .env.example .env
+RUN touch database/database.sqlite
 RUN rm -rf html
 RUN ln -s public html
 
