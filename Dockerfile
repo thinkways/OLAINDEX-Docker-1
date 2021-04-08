@@ -23,7 +23,7 @@ RUN sed -i "s?\$proxies;?\$proxies=\'\*\*\';?" /var/www/app/Http/Middleware/Trus
 ENV COMPOSER_ALLOW_SUPERUSER=1
 RUN composer install -vvv
 RUN chmod -R 777 storage
-RUN chown -R www:www
+RUN chown -R www:www * 
 RUN composer run install-app
 
 RUN chown -R nobody.nobody /var/www && \
