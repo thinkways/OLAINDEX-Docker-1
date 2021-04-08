@@ -15,8 +15,6 @@ RUN git clone https://github.com/WangNingkai/OLAINDEX.git tmp
 RUN mv tmp/.git .
 RUN rm -rf tmp
 RUN git reset --hard
-RUN cp .env.example .env
-RUN touch database/database.sqlite
 RUN rm -rf html
 RUN ln -s public html
 
@@ -24,6 +22,9 @@ RUN sed -i "s?\$proxies;?\$proxies=\'\*\*\';?" /var/www/app/Http/Middleware/Trus
 
 ENV COMPOSER_ALLOW_SUPERUSER=1
 RUN composer install -vvv
+RUN chmod -R 777 storage
+RUN chown -R www:www
+RUN composer run install-app
 
 RUN chown -R nobody.nobody /var/www && \
   chown -R nobody.nobody /run && \
