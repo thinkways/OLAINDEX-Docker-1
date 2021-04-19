@@ -36,4 +36,6 @@ RUN sed -i 's/jpg|jpeg|gif|png|//' /etc/nginx/nginx.conf
 
 USER nobody
 
+EXPOSE 8080
+
 RUN * * * * * php artisan schedule:run >> /dev/null 2>&1 &
